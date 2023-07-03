@@ -2,7 +2,7 @@ package estancia.entidades;
 
 public class Familia {
 
-    private int id;
+    private int idFamilia;
     private String nombre;
     private int edadMinima;
     private int edadMaxima;
@@ -22,8 +22,8 @@ public class Familia {
         this.idCasaFamilia = idCasaFamilia;
     }
 
-    public Familia(int id, String nombre, int edadMinima, int edadMaxima, int numHijos, String email, int idCasaFamilia) {
-        this.id = id;
+    public Familia(int idFamilia, String nombre, int edadMinima, int edadMaxima, int numHijos, String email, int idCasaFamilia) {
+        this.idFamilia = idFamilia;
         this.nombre = nombre;
         this.edadMinima = edadMinima;
         this.edadMaxima = edadMaxima;
@@ -42,12 +42,12 @@ public class Familia {
 
 
 
-    public int getId() {
-        return id;
+    public int getIdFamilia() {
+        return idFamilia;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdFamilia(int idFamilia) {
+        this.idFamilia = idFamilia;
     }
 
     public String getNombre() {
@@ -92,7 +92,7 @@ public class Familia {
 
     @Override
     public String toString() {
-        return "Familia{" + "id=" + id + ", nombre=" + nombre + ", edadMinima=" + edadMinima + ", edadMaxima=" + edadMaxima + ", numHijos=" + numHijos + ", email=" + email + ", idCasaFamilia=" + idCasaFamilia + '}';
+        return "Familia{" + "idFamilia=" + idFamilia + ", nombre=" + nombre + ", edadMinima=" + edadMinima + ", edadMaxima=" + edadMaxima + ", numHijos=" + numHijos + ", email=" + email + ", idCasaFamilia=" + idCasaFamilia + '}';
     }
     
 }
