@@ -22,6 +22,8 @@ public class ProductoDAO extends DAO {
         } catch (Exception e) {
             desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
@@ -162,9 +164,7 @@ public class ProductoDAO extends DAO {
             }
             String sql = "UPDATE Producto SET nombre = '" + producto.getNombre() + "', precio = " + producto.getPrecio() + ", codigo_fabricante =" + producto.getCodigoFabricante() + " WHERE codigo =" + producto.getCodigo();
             insertarModificarEliminar(sql);
-            desconectarBase();
         } catch (Exception e) {
-            desconectarBase();
             throw e;
         } finally {
             desconectarBase();
@@ -181,12 +181,11 @@ public class ProductoDAO extends DAO {
             while (this.resultado.next()) {
                 nombres.add(resultado.getString(1));
             }
-
-            desconectarBase();
             return nombres;
         } catch (Exception e) {
-            desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
@@ -199,12 +198,11 @@ public class ProductoDAO extends DAO {
             while (resultado.next()) {
                 productos.add(new Producto(resultado.getString(1), resultado.getDouble(2)));
             }
-
-            desconectarBase();
             return productos;
         } catch (Exception e) {
-            desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
