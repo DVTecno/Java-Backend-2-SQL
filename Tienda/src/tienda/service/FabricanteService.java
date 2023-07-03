@@ -19,6 +19,7 @@ public class FabricanteService {
                 Fabricante fabricante = new Fabricante();
                 fabricante.setNombre(nombre);
                 this.dao.guardarFabricante(fabricante);
+                imprimirFabricante();
             } else {
                 throw new Exception("Debe indicar un nombre de fabricante");
             }
@@ -112,13 +113,20 @@ public class FabricanteService {
             if (fabricantes.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
             } else {
-                System.out.println("*********************************");
-                System.out.println("|   Codigo  |      Nombre       | ");
-                System.out.println("---------------------------------");
-                for (Fabricante fabricante : fabricantes) {
-                    System.out.println("   " + fabricante.getCodigo() + "            " + fabricante.getNombre());
-                }
-                System.out.println("*********************************");
+                System.out.println("*****************************");
+            System.out.println(" ___________________________");
+            System.out.print("|");
+            System.out.print("\u001B[31mCodigo\u001B[0m");
+            System.out.print("|       ");
+            System.out.print("\u001B[31mNombre\u001B[0m");
+            System.out.println("       |");
+
+            System.out.println("|______|____________________|");
+            for (Fabricante fabricante : fabricantes) {
+                System.out.printf("|%-5s |%-20s|\n", fabricante.getCodigo(), fabricante.getNombre());
+                System.out.println("|______|____________________|");
+            }
+            System.out.println("*****************************");
             }
         } catch (Exception e) {
             throw e;

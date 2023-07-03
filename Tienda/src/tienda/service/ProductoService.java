@@ -132,15 +132,16 @@ public class ProductoService {
             Collection<Producto> productos = dao.listarProductos();
             if (productos.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
-            } else {
-                System.out.println("*********************************************************************************************");
-                System.out.println("|Codigo|            Nombre                 |           Precio         |   Codigo_Fabricante |");
-                System.out.println("---------------------------------------------------------------------------------------------");
-                for (Producto producto : productos) {
-                    System.out.println(" " + producto.getCodigo() + "        " + producto.getNombre() + "                     " + producto.getPrecio() + "                       " + producto.getCodigoFabricante());
-                }
-                System.out.println("*********************************************************************************************");
             }
+            System.out.println("**************************************************************************");
+            System.out.println(" ________________________________________________________________________");
+            System.out.println("|Codigo|            Nombre                 |   Precio  |Codigo_Fabricante|");
+            System.out.println("|______|___________________________________|___________|_________________|");
+            for (Producto producto : productos) {
+                System.out.printf("|%-5s |%-35s|$ %-8.2f |%17s|\n", producto.getCodigo(), producto.getNombre(), producto.getPrecio(), producto.getCodigoFabricante());
+                System.out.println("|______|___________________________________|___________|_________________|");
+            }
+            System.out.println("**************************************************************************");
         } catch (Exception e) {
             throw e;
         }
@@ -290,13 +291,17 @@ public class ProductoService {
             if (nombres.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
             } else {
-                System.out.println("***********************************");
-                System.out.println("|            Nombre               |");
-                System.out.println("-----------------------------------");
+                System.out.println("*************************************");
+                System.out.println(" ___________________________________");
+                System.out.print("|  ");
+                System.out.print("           \u001B[31mNombre\u001B[0m");
+                System.out.println("                |  ");
+                System.out.println("|___________________________________|");
                 for (String nombre : nombres) {
-                    System.out.println("   " + nombre);
+                    System.out.printf("|%-35s|\n", nombre);
+                    System.out.println("|___________________________________|");
                 }
-                System.out.println("***********************************");
+                System.out.println("*************************************");
             }
         } catch (Exception e) {
             throw e;
@@ -308,15 +313,22 @@ public class ProductoService {
             List<Producto> productos = dao.listarProductosPorNombrePrecio();
             if (productos.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
-            } else {
-                System.out.println("*************************************************************");
-                System.out.println("|            Nombre             |            Precio         |");
-                System.out.println("-------------------------------------------------------------");
-                for (Producto producto : productos) {
-                    System.out.println(" " + producto.getNombre() + "                     " + producto.getPrecio());
-                }
-                System.out.println("*************************************************************");
             }
+            System.out.println("*************************************************");
+            System.out.println(" _______________________________________________");
+            System.out.print("|  ");
+            System.out.print("\u001B[31mNombre\u001B[0m");
+            System.out.print("                           |  ");
+            System.out.print("\u001B[31mPrecio\u001B[0m");
+            System.out.println("   |");
+
+            System.out.println("|___________________________________|___________|");
+            for (Producto producto : productos) {
+                System.out.printf("|%-35s|$ %-8.2f |\n", producto.getNombre(), producto.getPrecio());
+                System.out.println("|___________________________________|___________|");
+            }
+            System.out.println("*************************************************");
+
         } catch (Exception e) {
             throw e;
         }
@@ -327,15 +339,22 @@ public class ProductoService {
             List<Producto> productos = dao.listarProductosPorPrecio();
             if (productos.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
-            } else {
-                System.out.println("**************************************************************");
-                System.out.println("|            Nombre              |            Precio         |");
-                System.out.println("--------------------------------------------------------------");
-                for (Producto producto : productos) {
-                    System.out.println(" " + producto.getNombre() + "                     " + producto.getPrecio());
-                }
-                System.out.println("**************************************************************");
             }
+            System.out.println("*************************************************");
+            System.out.println(" _______________________________________________");
+            System.out.print("|  ");
+            System.out.print("\u001B[31mNombre\u001B[0m");
+            System.out.print("                           |  ");
+            System.out.print("\u001B[31mPrecio\u001B[0m");
+            System.out.println("   |");
+
+            System.out.println("|___________________________________|___________|");
+            for (Producto producto : productos) {
+                System.out.printf("|%-35s|$ %-8.2f |\n", producto.getNombre(), producto.getPrecio());
+                System.out.println("|___________________________________|___________|");
+            }
+            System.out.println("*************************************************");
+
         } catch (Exception e) {
             throw e;
         }
@@ -347,13 +366,15 @@ public class ProductoService {
             if (productos.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
             }
-            System.out.println("*********************************************************************************************");
-            System.out.println("|Codigo|            Nombre                 |           Precio         |   Codigo_Fabricante |");
-            System.out.println("---------------------------------------------------------------------------------------------");
+            System.out.println("**************************************************************************");
+            System.out.println(" ________________________________________________________________________");
+            System.out.println("|Codigo|            Nombre                 |   Precio  |Codigo_Fabricante|");
+            System.out.println("|______|___________________________________|___________|_________________|");
             for (Producto producto : productos) {
-                System.out.println(" " + producto.getCodigo() + "        " + producto.getNombre() + "                     " + producto.getPrecio() + "                       " + producto.getCodigoFabricante());
+                System.out.printf("|%-5s |%-35s|$ %-8.2f |%17s|\n", producto.getCodigo(), producto.getNombre(), producto.getPrecio(), producto.getCodigoFabricante());
+                System.out.println("|______|___________________________________|___________|_________________|");
             }
-            System.out.println("*********************************************************************************************");
+            System.out.println("**************************************************************************");
         } catch (Exception e) {
             throw e;
         }
@@ -364,15 +385,22 @@ public class ProductoService {
             List<Producto> productos = dao.listarProductosPorNombrePrecioMin();
             if (productos.isEmpty()) {
                 throw new Exception("No existen Productos para mostrar");
-            } else {
-                System.out.println("*************************************************************");
-                System.out.println("|            Nombre             |            Precio         |");
-                System.out.println("-------------------------------------------------------------");
-                for (Producto producto : productos) {
-                    System.out.println(" " + producto.getNombre() + "                     " + producto.getPrecio());
-                }
-                System.out.println("*************************************************************");
             }
+            System.out.println("*************************************************");
+            System.out.println(" _______________________________________________");
+            System.out.print("|  ");
+            System.out.print("\u001B[31mNombre\u001B[0m");
+            System.out.print("                           |  ");
+            System.out.print("\u001B[31mPrecio\u001B[0m");
+            System.out.println("   |");
+
+            System.out.println("|___________________________________|___________|");
+            for (Producto producto : productos) {
+                System.out.printf("|%-35s|$ %-8.2f |\n", producto.getNombre(), producto.getPrecio());
+                System.out.println("|___________________________________|___________|");
+            }
+            System.out.println("*************************************************");
+
         } catch (Exception e) {
             throw e;
         }

@@ -7,7 +7,7 @@ import tienda.entidades.Fabricante;
 public class FabricanteDAO extends DAO {
 
     public FabricanteDAO() {
-    }    
+    }
 
     public void guardarFabricante(Fabricante fabricante) throws Exception {
         try {
@@ -15,10 +15,12 @@ public class FabricanteDAO extends DAO {
                 throw new Exception("Debe ingresar un fabricante");
             } else {
                 String sql = "INSERT INTO Fabricante (nombre) VALUES('" + fabricante.getNombre() + "')";
-                this.insertarModificarEliminar(sql);
+                insertarModificarEliminar(sql);
             }
         } catch (Exception e) {
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
@@ -27,14 +29,12 @@ public class FabricanteDAO extends DAO {
             if (fabricante == null) {
                 throw new Exception("Debe indicar el fabricante a modificar");
             }
-
-            String var10000 = fabricante.getNombre();
-            String sql = "UPDATE Fabricante SET nombre = '" + var10000 + "' WHERE codigo = " + fabricante.getCodigo();
-            this.insertarModificarEliminar(sql);
+            String sql = "UPDATE Fabricante SET nombre = '" + fabricante.getNombre() + "' WHERE codigo = " + fabricante.getCodigo();
+            insertarModificarEliminar(sql);
         } catch (Exception e) {
             throw e;
         } finally {
-            this.desconectarBase();
+            desconectarBase();
             System.out.println("Base de datos desconectada");
         }
 
@@ -43,9 +43,11 @@ public class FabricanteDAO extends DAO {
     public void eliminarFabricantePorId(Integer codigo) throws Exception {
         try {
             String sql = "DELETE FROM fabricante WHERE codigo = " + codigo;
-            this.insertarModificarEliminar(sql);
+            insertarModificarEliminar(sql);
         } catch (Exception e) {
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
@@ -54,68 +56,67 @@ public class FabricanteDAO extends DAO {
             String var2 = "DELETE FROM fabricante WHERE nombre = '" + nombre + "'";
         } catch (Exception e) {
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
     public Fabricante buscarFabricantePorNombre(String nombre) throws Exception {
         try {
             String sql = "SELECT * FROM fabricante WHERE nombre = '" + nombre + "'";
-            this.consultarBase(sql);
+            consultarBase(sql);
             Fabricante fabricante = null;
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 fabricante = new Fabricante();
-                fabricante.setCodigo(this.resultado.getInt(1));
-                fabricante.setNombre(this.resultado.getString(2));
+                fabricante.setCodigo(resultado.getInt(1));
+                fabricante.setNombre(resultado.getString(2));
             }
-
-            this.desconectarBase();
             return fabricante;
         } catch (Exception e) {
-            this.desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 
     public Fabricante buscarPorId(Integer id) throws Exception {
         try {
             String sql = "SELECT * FROM fabricante WHERE codigo = " + id;
-            this.consultarBase(sql);
+            consultarBase(sql);
             Fabricante fabricante = null;
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 fabricante = new Fabricante();
-                fabricante.setCodigo(this.resultado.getInt(1));
-                fabricante.setNombre(this.resultado.getString(2));
+                fabricante.setCodigo(resultado.getInt(1));
+                fabricante.setNombre(resultado.getString(2));
             }
-
-            this.desconectarBase();
             return fabricante;
         } catch (Exception e) {
-            this.desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
-    }    
+    }
 
     public List<Fabricante> listarFabricante() throws Exception {
         try {
             String sql = "SELECT * FROM fabricante";
-            this.consultarBase(sql);
+            consultarBase(sql);
             Fabricante fabricante = null;
             List<Fabricante> fabricantes = new ArrayList();
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 fabricante = new Fabricante();
-                fabricante.setCodigo(this.resultado.getInt(1));
-                fabricante.setNombre(this.resultado.getString(2));
+                fabricante.setCodigo(resultado.getInt(1));
+                fabricante.setNombre(resultado.getString(2));
                 fabricantes.add(fabricante);
             }
-
-            this.desconectarBase();
             return fabricantes;
         } catch (Exception e) {
-            this.desconectarBase();
             throw e;
+        } finally {
+            desconectarBase();
         }
     }
 }

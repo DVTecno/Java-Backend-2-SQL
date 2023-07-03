@@ -15,13 +15,12 @@ public class ProductoDAO extends DAO {
             if (producto == null) {
                 throw new Exception("Debe ingresar un producto");
             } else {
-                String var10000 = producto.getNombre();
-                String sql = "INSERT INTO Producto (nombre, precio, codigo_fabricante)VALUES ('" + var10000 + "', " + producto.getPrecio() + ", " + producto.getCodigoFabricante() + ")";
-                this.insertarModificarEliminar(sql);
-                this.desconectarBase();
+                String sql = "INSERT INTO Producto (nombre, precio, codigo_fabricante)VALUES ('" + producto.getNombre() + "', " + producto.getPrecio() + ", " + producto.getCodigoFabricante() + ")";
+                insertarModificarEliminar(sql);
+                desconectarBase();
             }
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -34,12 +33,12 @@ public class ProductoDAO extends DAO {
 
             String var10000 = producto.getNombre();
             String sql = "UPDATE Producto SET nombre = '" + var10000 + "', precio = " + producto.getPrecio() + " WHERE precio = " + precio;
-            this.insertarModificarEliminar(sql);
-            this.desconectarBase();
+            insertarModificarEliminar(sql);
+            desconectarBase();
         } catch (Exception e) {
             throw e;
         } finally {
-            this.desconectarBase();
+            desconectarBase();
         }
 
     }
@@ -47,10 +46,10 @@ public class ProductoDAO extends DAO {
     public void eliminarProductoPorId(Integer codigo) throws Exception {
         try {
             String sql = "DELETE FROM producto WHERE codigo = '" + codigo + "'";
-            this.insertarModificarEliminar(sql);
-            this.desconectarBase();
+            insertarModificarEliminar(sql);
+            desconectarBase();
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -58,10 +57,10 @@ public class ProductoDAO extends DAO {
     public void eliminarProducto(String nombre) throws Exception {
         try {
             String sql = "DELETE FROM producto WHERE nombre = '" + nombre + "'";
-            this.insertarModificarEliminar(sql);
-            this.desconectarBase();
+            insertarModificarEliminar(sql);
+            desconectarBase();
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -69,21 +68,21 @@ public class ProductoDAO extends DAO {
     public Producto buscarProductoPorNombre(String nombre) throws Exception {
         try {
             String sql = "SELECT * FROM Producto WHERE nombre = '" + nombre + "'";
-            this.consultarBase(sql);
+            consultarBase(sql);
             Producto producto = null;
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 producto = new Producto();
-                producto.setCodigo(this.resultado.getInt(1));
-                producto.setNombre(this.resultado.getString(2));
-                producto.setPrecio(this.resultado.getDouble(3));
-                producto.setCodigoFabricante(this.resultado.getInt(4));
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return producto;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -91,21 +90,21 @@ public class ProductoDAO extends DAO {
     public Producto buscarPorId(Integer id) throws Exception {
         try {
             String sql = "SELECT * FROM Producto WHERE codigo =" + id;
-            this.consultarBase(sql);
+            consultarBase(sql);
             Producto producto = null;
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 producto = new Producto();
-                producto.setCodigo(this.resultado.getInt(1));
-                producto.setNombre(this.resultado.getString(2));
-                producto.setPrecio(this.resultado.getDouble(3));
-                producto.setCodigoFabricante(this.resultado.getInt(4));
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return producto;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -113,23 +112,23 @@ public class ProductoDAO extends DAO {
     public Collection<Producto> listarProductos() throws Exception {
         try {
             String sql = "SELECT * FROM Producto";
-            this.consultarBase(sql);
+            consultarBase(sql);
             Producto producto = null;
-            Collection<Producto> productos = new ArrayList();
+            List<Producto> productos = new ArrayList();
 
             while (this.resultado.next()) {
                 producto = new Producto();
-                producto.setCodigo(this.resultado.getInt(1));
-                producto.setNombre(this.resultado.getString(2));
-                producto.setPrecio(this.resultado.getDouble(3));
-                producto.setCodigoFabricante(this.resultado.getInt(4));
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
                 productos.add(producto);
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return productos;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -137,21 +136,21 @@ public class ProductoDAO extends DAO {
     public Producto buscarProductoPorId(Integer codigo) throws Exception {
         try {
             String sql = "SELECT * FROM Producto WHERE codigo =" + codigo;
-            this.consultarBase(sql);
+            consultarBase(sql);
             Producto producto = null;
 
-            while (this.resultado.next()) {
+            while (resultado.next()) {
                 producto = new Producto();
-                producto.setCodigo(this.resultado.getInt(1));
-                producto.setNombre(this.resultado.getString(2));
-                producto.setPrecio(this.resultado.getDouble(3));
-                producto.setCodigoFabricante(this.resultado.getInt(4));
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return producto;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -161,16 +160,14 @@ public class ProductoDAO extends DAO {
             if (producto == null) {
                 throw new Exception("Debe indicar el producto a modificar");
             }
-
-            String var10000 = producto.getNombre();
-            String sql = "UPDATE Producto SET nombre = '" + var10000 + "', precio = " + producto.getPrecio() + ", codigo_fabricante =" + producto.getCodigoFabricante() + " WHERE codigo =" + producto.getCodigo();
-            this.insertarModificarEliminar(sql);
-            this.desconectarBase();
+            String sql = "UPDATE Producto SET nombre = '" + producto.getNombre() + "', precio = " + producto.getPrecio() + ", codigo_fabricante =" + producto.getCodigoFabricante() + " WHERE codigo =" + producto.getCodigo();
+            insertarModificarEliminar(sql);
+            desconectarBase();
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         } finally {
-            this.desconectarBase();
+            desconectarBase();
         }
 
     }
@@ -178,17 +175,17 @@ public class ProductoDAO extends DAO {
     public List<String> listarProductosPorNombre() throws Exception {
         try {
             String sql = "SELECT nombre FROM Producto ";
-            this.consultarBase(sql);
+            consultarBase(sql);
             List<String> nombres = new ArrayList();
 
             while (this.resultado.next()) {
-                nombres.add(this.resultado.getString(1));
+                nombres.add(resultado.getString(1));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return nombres;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -196,17 +193,17 @@ public class ProductoDAO extends DAO {
     public List<Producto> listarProductosPorNombrePrecio() throws Exception {
         try {
             String sql = "SELECT nombre, precio FROM Producto ";
-            this.consultarBase(sql);
+            consultarBase(sql);
             List<Producto> productos = new ArrayList();
 
-            while (this.resultado.next()) {
-                productos.add(new Producto(this.resultado.getString(1), this.resultado.getDouble(2)));
+            while (resultado.next()) {
+                productos.add(new Producto(resultado.getString(1), resultado.getDouble(2)));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return productos;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -214,41 +211,41 @@ public class ProductoDAO extends DAO {
     public List<Producto> listarProductosPorPrecio() throws Exception {
         try {
             String sql = "SELECT nombre, precio FROM Producto WHERE precio > 120 AND precio <202";
-            this.consultarBase(sql);
+            consultarBase(sql);
             List<Producto> productos = new ArrayList();
 
-            while (this.resultado.next()) {
-                productos.add(new Producto(this.resultado.getString(1), this.resultado.getDouble(2)));
+            while (resultado.next()) {
+                productos.add(new Producto(resultado.getString(1), resultado.getDouble(2)));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return productos;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
 
-    public Collection<Producto> listarProductosPortatil() throws Exception {
+    public List<Producto> listarProductosPortatil() throws Exception {
         try {
             String sql = "SELECT * FROM Producto WHERE nombre LIKE '%portatil%' LIMIT 100;";
-            this.consultarBase(sql);
+            consultarBase(sql);
             Producto producto = null;
-            Collection<Producto> productos = new ArrayList();
+            List<Producto> productos = new ArrayList();
 
             while (this.resultado.next()) {
                 producto = new Producto();
-                producto.setCodigo(this.resultado.getInt(1));
-                producto.setNombre(this.resultado.getString(2));
-                producto.setPrecio(this.resultado.getDouble(3));
-                producto.setCodigoFabricante(this.resultado.getInt(4));
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
                 productos.add(producto);
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return productos;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
@@ -256,17 +253,17 @@ public class ProductoDAO extends DAO {
     public List<Producto> listarProductosPorNombrePrecioMin() throws Exception {
         try {
             String sql = "SELECT p1.nombre, p1.precio FROM Producto p1\nWHERE p1.precio = (SELECT MIN(p2.precio) FROM Producto p2\nWHERE p2.codigo_fabricante = p1.codigo_fabricante)\nORDER BY precio ASC LIMIT 1;\n";
-            this.consultarBase(sql);
+            consultarBase(sql);
             List<Producto> productos = new ArrayList();
 
-            while (this.resultado.next()) {
-                productos.add(new Producto(this.resultado.getString(1), this.resultado.getDouble(2)));
+            while (resultado.next()) {
+                productos.add(new Producto(resultado.getString(1), resultado.getDouble(2)));
             }
 
-            this.desconectarBase();
+            desconectarBase();
             return productos;
         } catch (Exception e) {
-            this.desconectarBase();
+            desconectarBase();
             throw e;
         }
     }
