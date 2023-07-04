@@ -1,4 +1,3 @@
-# Java-Backend-2-SQL
 # JDBC
 
 Comenzamos con Java con Base de Datos · JDBC!!! 🙌🏼💪🏼
@@ -10,3 +9,8 @@ Aquí tienes una lista de videos instructivos que complementan esta guía:
 
 Además, puedes acceder a la guía completa que contiene instrucciones detalladas de instalación, conexión, ejercicios y más en el siguiente enlace:
 - [Guía completa de JDBC](https://drive.google.com/drive/folders/1hQ2EIxhrp16xryuV92HAliZhEf_YiACT)
+
+A continuación, se muestran los resultados del código para el Ejercicio 1:
+
+![Ejercicio 1.1](https://github.com/DVTecno/Java-Backend-2-SQL/blob/main/Tienda/src/Image/Ej1.1.png)
+![Ejercicio 1](https://github.com/DVTecno/Java-Backend-2-SQL/blob/main/Tienda/src/Image/ej1.png)
