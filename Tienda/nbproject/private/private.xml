@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/service/FabricanteService.java</file>
+            <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/entidades/Producto.java</file>
+            <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/Main.java</file>
             <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/persistencia/ProductoDAO.java</file>
-            <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/persistencia/FabricanteDAO.java</file>
             <file>file:/C:/Users/veras/OneDrive/Documentos/NetBeansProjects/Java-Backend-2-SQL/Tienda/src/tienda/service/ProductoService.java</file>
         </group>
     </open-files>

@@ -153,20 +153,15 @@ public class ProductoService {
 
         label94:
         do {
-            System.out.println("""
-                                         *** BIENVENIDOS AL SISTEMA DE CONSULTAS ***
-                                                            Menu
-                               a) Listar el nombre de todos los productos que hay en la tabla producto.
-                               b) Listar los nombres y los precios de todos los productos de la tabla producto.
-                               c) Listar aquellos productos cuyo precio esté entre 120 y 202.
-                               d) Buscar y listar todos los Portátiles de la tabla producto.
-                               e) Listar el nombre y el precio del producto más barato.
-                               f) Ingresar un producto a la base de datos.
-                               g) Ingresar un fabricante a la base de datos.
-                               h) Editar un producto con datos a elección.
-                               i) SALIR.
-                               
-                               """);
+            System.out.println(" *** BIENVENIDOS AL SISTEMA DE CONSULTAS ***\n"
+                    + "Menu\n"
+                    + "a) Listar el nombre de todos los productos que hay en la tabla producto.\n"
+                    + "c) Listar aquellos productos cuyo precio esté entre 120 y 202.\n"
+                    + "e) Listar el nombre y el precio del producto más barato.\n"
+                    + "f) Ingresar un producto a la base de datos.\n"
+                    + "g) Ingresar un fabricante a la base de datos.\n"
+                    + "h) Editar un producto con datos a elección.\n"
+                    + "i) SALIR.\n");
             System.out.print("Ingrese una Opcion: ");
             switch (this.leer.next().toLowerCase()) {
                 case "a":
